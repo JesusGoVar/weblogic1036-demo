@@ -17,6 +17,8 @@ v_nou_template=/tmp/$$_nou_template.jar
 v_nombre_dominio=mydomain
 v_cookie=/tmp/$$_cookie
 v_download=http://download.oracle.com/otn/nt/middleware/11g/wls/1036/wls1036_generic.jar
+v_java_version=jdk-7u75-linux-x64
+v_java_path=http://download.oracle.com/otn/java/jdk/7u75-b13/'$v_java_version'.tar.gz
 v_software=/u01/install/wls1036_generic.jar
 v_tmp_silent=/tmp/$$_silent.xml
 
@@ -25,7 +27,7 @@ cd /u01/install
 # Descarga de JVM
 curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.6.0" \
 -b 'oraclelicense=accept-dbindex-cookie' \
--OL http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz
+-OL v_java_path
 
 v_Site2pstoreToken=`curl -s -A "Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0" -L $v_download | grep site2pstoretoken | awk -Fsite2pstoretoken {'print $2'}|awk -F\= {'print  $2'}|awk -F\" {'print $2'}`
 
@@ -41,8 +43,8 @@ curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Ic
 -OL $v_download
 
 #Instalacion JVM
-tar -xzvf /u01/install/jdk-7u79-linux-x64.tar.gz -C /u01/install
-mv /u01/install/jdk1.7.0_79 /u01/java
+tar -xzvf /u01/install/v_java_version.tar.gz -C /u01/install
+mv /u01/install/v_java_version /u01/java
 
 #Instalación Weblogic
 echo '<?xml version="1.0" encoding="UTF-8"?>
