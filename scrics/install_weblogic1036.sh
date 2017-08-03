@@ -43,8 +43,8 @@ curl -A "Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Ic
 -OL $v_download
 
 #Instalacion JVM
-tar -xzvf /u01/install/v_java_version.tar.gz -C /u01/install
-mv /u01/install/v_java_version /u01/java
+tar -xzvf /u01/install/'$v_java_version'.tar.gz -C /u01/install
+mv /u01/install/'$v_java_version' /u01/java
 
 #Instalación Weblogic
 echo '<?xml version="1.0" encoding="UTF-8"?>
